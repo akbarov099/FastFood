@@ -1,0 +1,23 @@
+<svg width="450.000000" height="844.000000" viewBox="0 0 450 844" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip7_85">
+			<rect id="Login" rx="-0.500000" width="449.000000" height="843.000000" transform="translate(0.500000 0.500000)" fill="white" fill-opacity="0"/>
+		</clipPath>
+		<linearGradient x1="-101.000000" y1="-0.000061" x2="289.999969" y2="119.000061" id="paint_linear_7_106_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#22A45D"/>
+			<stop offset="1.000000" stop-color="#1BCBAC" stop-opacity="0.701961"/>
+		</linearGradient>
+		<linearGradient x1="450.000000" y1="844.000061" x2="59.000031" y2="724.999939" id="paint_linear_7_107_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#22A45D"/>
+			<stop offset="1.000000" stop-color="#1BCBAC" stop-opacity="0.701961"/>
+		</linearGradient>
+	</defs>
+	<rect id="Login" rx="-0.500000" width="449.000000" height="843.000000" transform="translate(0.500000 0.500000)" fill="#FFFFFF" fill-opacity="1.000000"/>
+	<g clip-path="url(#clip7_85)">
+		<path id="Vector 1" d="M-91.96 73.27C-54.66 74.83 -45.32 117.4 -8.03 118.94C37.68 120.83 49.21 72.96 92.99 59.72C147.09 43.36 189.77 89.6 237.73 59.72C264.04 43.32 290 0 290 0L-101 0L-101 73.27C-101 73.27 -95.49 73.12 -91.96 73.27Z" fill="url(#paint_linear_7_106_0)" fill-opacity="1.000000" fill-rule="evenodd"/>
+		<path id="Vector 1" d="M440.95 770.72C403.66 769.16 394.31 726.59 357.02 725.05C311.31 723.16 299.78 771.03 256 784.27C201.91 800.63 159.22 754.39 111.26 784.27C84.95 800.67 59 844 59 844L450 844L450 770.72C450 770.72 444.48 770.87 440.95 770.72Z" fill="url(#paint_linear_7_107_0)" fill-opacity="1.000000" fill-rule="evenodd"/>
+	</g>
+</svg>

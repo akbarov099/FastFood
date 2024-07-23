@@ -1,0 +1,26 @@
+.recom {
+    margin-top: 20px;
+    margin-bottom: 80px;
+
+    .recom_title {
+        font-family: $inconsolata;
+        font-weight: 600;
+        font-size: 26px;
+        color: $black;
+        letter-spacing: 1px;
+    }
+
+    .recom_wrapper {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 15px;
+        grid-auto-flow: dense;
+
+        .recom_item:nth-child(2n) {
+            grid-column: 2;
+            grid-row: auto / span 1;
+            margin-top: 20px;
+        }
+    }
+}

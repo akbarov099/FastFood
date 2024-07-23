@@ -1,0 +1,21 @@
+.header__wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .header__logo{
+        width: 220px;
+        height: 50px;
+        object-fit: cover;
+        object-position: 0px -21px;
+    }
+
+    .header__icon{
+        font-size: 22px;
+        transition: all 0.3s ease;
+
+        &:hover{
+            color: $light__green;
+        }
+    }
+}
