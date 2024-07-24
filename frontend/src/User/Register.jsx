@@ -1,20 +1,38 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import { NavLink } from "react-router-dom";
-import { FaUser } from "react-icons/fa6";
-import { BiSolidLockAlt } from "react-icons/bi";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { MdEmail } from "react-icons/md";
-import { ImMobile } from "react-icons/im";
 import { CardActionArea } from "@mui/material";
 import InputMask from "react-input-mask";
-import FotoUp from "../assets/images/sign_up_foto.svg"
-import FotoTop from "../assets/images/sign_top_foto.svg"
+import FotoUp from "../assets/images/sign_up_foto.svg";
+import FotoTop from "../assets/images/sign_top_foto.svg";
 
 export const Register = () => {
-  const [mobile, setMobile] = useState("+996");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [mobile, setMobile] = useState('+996');
+  const [error, setError] = useState(null);
 
-  const handleMobileChange = (e) => {
-    setMobile(e.target.value);
+  const handleRegister = async () => {
+    setError(null); 
+
+    try {
+      const response = await axios.post('http://localhost:8000/api/register/', {
+        username,
+        password,
+        email,
+        mobile
+      });
+
+      console.log('Registration successful:', response.data);
+    } catch (error) {
+      if (error.response) {
+        setError(error.response.data.error || "Registration failed.");
+      } else {
+        setError("An error occurred. Please try again later.");
+      }
+    }
   };
 
   return (
@@ -25,38 +43,31 @@ export const Register = () => {
         <div className="register__wrapper">
           <h2>Create account</h2>
           <div className="register__forms__wrapper">
-
-          <div className="register__forms">
-            <FaUser className="register__icon" />
-            <input type="text" placeholder="Username" />
-          </div>
-
-          <div className="register__forms">
-            <BiSolidLockAlt className="register__icon-password" />
-            <input type="password" placeholder="Password" />
-          </div>
-
             <div className="register__forms">
-              <MdEmail className="register__icon-password" />
-              <input type="email" placeholder="Email" />
+              <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
             </div>
-
             <div className="register__forms">
-              <ImMobile className="register__icon-password" />
+              <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            </div>
+            <div className="register__forms">
+              <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            </div>
+            <div className="register__forms">
               <InputMask
                 mask="+996 999 99 99 99"
                 value={mobile}
-                onChange={handleMobileChange}
+                onChange={(e) => setMobile(e.target.value)}
                 placeholder="Mobile"
               >
                 {(inputProps) => <input {...inputProps} type="text" />}
               </InputMask>
             </div>
           </div>
+          {error && <p className="error-message">{error}</p>}
         </div>
         <div className="registerinn__wrapper">
           <h3>Create</h3>
-          <CardActionArea className="registerin__btn">
+          <CardActionArea className="registerin__btn" onClick={handleRegister}>
             <FaArrowRightLong />
           </CardActionArea>
         </div>
