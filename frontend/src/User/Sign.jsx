@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-// import App from "./App.jsx";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { NavLink } from "react-router-dom";
 import { FaUser } from "react-icons/fa6";
@@ -8,12 +7,25 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { CardActionArea } from "@mui/material";
 import FotoUp from "../assets/images/sign_up_foto.svg";
 import FotoTop from "../assets/images/sign_top_foto.svg";
+import Global from "../Global";
 
 export const Sign = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false); 
   const [error, setError] = useState(null); 
+  const [isAuthenticated, setIsAuthenticated] = useState(false); 
+
+  useEffect(() => {
+    // Check if user is already authenticated
+    const storedUsername = localStorage.getItem('username');
+    const storedPassword = localStorage.getItem('password');
+    if (storedUsername && storedPassword) {
+      setUsername(storedUsername);
+      setPassword(storedPassword);
+      setIsAuthenticated(true);
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault(); 
@@ -26,8 +38,15 @@ export const Sign = () => {
         username,
         password
       });
-      
+
       console.log('Login successful:', response.data);
+
+      // Save username and password in localStorage
+      localStorage.setItem('username', username);
+      localStorage.setItem('password', password);
+      localStorage.setItem('authToken', response.data.token);
+
+      setIsAuthenticated(true);
     } catch (err) {
       if (err.response) {
         setError(err.response.data.error || "Login failed.");
@@ -38,6 +57,10 @@ export const Sign = () => {
       setIsLoading(false); 
     }
   };
+
+  if (isAuthenticated) {
+    return <Global />; 
+  }
 
   return (
     <section className="sign">
