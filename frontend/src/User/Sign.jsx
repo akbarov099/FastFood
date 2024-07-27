@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
-import { NavLink } from "react-router-dom";
+import axios from "axios";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa6";
 import { BiSolidLockAlt } from "react-icons/bi";
 import { FaArrowRightLong } from "react-icons/fa6";
@@ -10,16 +10,17 @@ import FotoTop from "../assets/images/sign_top_foto.svg";
 import Global from "../Global";
 
 export const Sign = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false); 
-  const [error, setError] = useState(null); 
-  const [isAuthenticated, setIsAuthenticated] = useState(false); 
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Check if user is already authenticated
-    const storedUsername = localStorage.getItem('username');
-    const storedPassword = localStorage.getItem('password');
+    const storedUsername = localStorage.getItem("username");
+    const storedPassword = localStorage.getItem("password");
     if (storedUsername && storedPassword) {
       setUsername(storedUsername);
       setPassword(storedPassword);
@@ -28,25 +29,26 @@ export const Sign = () => {
   }, []);
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
-    setIsLoading(true); 
-    setError(null); 
+    setIsLoading(true);
+    setError(null);
 
     try {
-      const response = await axios.post('http://localhost:8000/api/login/', {
+      const response = await axios.post("http://localhost:8000/api/login/", {
         username,
-        password
+        password,
       });
 
-      console.log('Login successful:', response.data);
+      console.log("Login successful:", response.data);
 
       // Save username and password in localStorage
-      localStorage.setItem('username', username);
-      localStorage.setItem('password', password);
-      localStorage.setItem('authToken', response.data.token);
+      localStorage.setItem("username", username);
+      localStorage.setItem("password", password);
+      localStorage.setItem("authToken", response.data.token);
 
       setIsAuthenticated(true);
+      navigate("/"); // Redirect to the Global component or another page
     } catch (err) {
       if (err.response) {
         setError(err.response.data.error || "Login failed.");
@@ -54,12 +56,12 @@ export const Sign = () => {
         setError("An error occurred. Please try again later.");
       }
     } finally {
-      setIsLoading(false); 
+      setIsLoading(false);
     }
   };
 
   if (isAuthenticated) {
-    return <Global />; 
+    return <Global />;
   }
 
   return (
@@ -73,24 +75,26 @@ export const Sign = () => {
           <div className="sign__forms__wrapper">
             <div className="sign__forms">
               <FaUser className="sign__icon" />
-              <input 
-                type="text" 
-                placeholder="Username" 
-                value={username} 
-                onChange={(e) => setUsername(e.target.value)} 
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
             <div className="sign__forms">
               <BiSolidLockAlt className="sign__icon-password" />
-              <input 
-                type="password" 
-                placeholder="Password" 
-                value={password} 
-                onChange={(e) => setPassword(e.target.value)} 
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </div>
-          <p>Forgot your password?</p>
+          <NavLink to="/forgot">
+            <p>Forgot your password?</p>
+          </NavLink>
         </div>
         <div className="signinn__wrapper">
           <h3>Sign in</h3>

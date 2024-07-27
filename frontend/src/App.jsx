@@ -1,11 +1,11 @@
 
 import React from "react";
-import { Sign } from "./User/Sign";
+import { User } from "./User/User";
 
 function App() {
   return (
     <div>
-      <Sign />
+      <User/>
     </div>
   );
 }
