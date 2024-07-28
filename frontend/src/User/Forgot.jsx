@@ -14,7 +14,6 @@ export const Forgot = () => {
       newCode[index] = value;
       setCode(newCode);
 
-      // Skip the separator and move to the next input
       if (index === 2) {
         inputs.current[index + 2].focus();
       } else if (index < 6) {

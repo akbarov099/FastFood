@@ -42,4 +42,4 @@ class LoginSerializer(serializers.Serializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ('id', 'username', 'email', 'mobile')  # Include the fields you want to expose
+        fields = ('id', 'username', 'email', 'mobile')  
