@@ -5,7 +5,6 @@ import { Home } from "./pages/Home/Home";
 import { Categoris } from "./pages/Categoris/Categoris";
 import { Bascket } from "./pages/Bascket/Bascket";
 import { Acount } from "./pages/Acount/Acount";
-import "./App.css";
 import Single from "./pages/Single/Single";
 
 function Global() {

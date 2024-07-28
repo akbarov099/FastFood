@@ -1,11 +1,10 @@
-
 import React from "react";
-import { User } from "./User/User";
+import Global from "./Global";
 
 function App() {
   return (
     <div>
-      <User/>
+      <Global/>
     </div>
   );
 }
