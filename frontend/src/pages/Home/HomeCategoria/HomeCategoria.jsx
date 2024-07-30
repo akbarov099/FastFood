@@ -9,7 +9,6 @@ export const HomeCategoria = () => {
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/products/')
       .then(response => {
-        console.log('Fetched products:', response.data); 
         setProducts(response.data);
       })
       .catch(error => console.error('Error fetching data:', error));
