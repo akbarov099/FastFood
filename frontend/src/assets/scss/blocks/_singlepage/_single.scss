@@ -1,49 +1,88 @@
+.single__panel {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+
+  .single__panel-icon {
+    font-size: 35px;
+    font-weight: 100px;
+    padding: 15px;
+  }
+}
+
 .single {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  height: 90svh;
 
-    .swiper {
-        width: 100%;
-        height: 400px;
-    }
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
 
-    .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: #fff;
 
-        /* Center slide text vertically */
+    .btns{
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+        gap: 40px;
     }
 
-    .swiper-slide img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
-    .swiper {
-        margin-left: auto;
-        margin-right: auto;
+    h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #000; /* Use hex color code instead of SCSS variable */
+      margin: 15px 0;
+      text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
     }
 
-    .single_foto {
-        width: 100%;
-        padding-top: 70%;
-        position: relative;
-        overflow: hidden;
-        margin: 0 auto;
-        box-shadow: 0px 0px 35px 8px rgba(24, 237, 31, 0.2);
-
-
-        img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    p {
+      color: #555;
+      text-align: center;
+      font-family: $montserrat;
+      font-size: 0.9rem;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 10;
+      line-clamp: 4;
     }
+
+    button {
+      background: $light__green;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-size: 1.125rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      outline: none;
+    }
+
+    h3 {
+      font-size: 1.75rem;
+      color: #333;
+      margin: 25px 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+  }
 }

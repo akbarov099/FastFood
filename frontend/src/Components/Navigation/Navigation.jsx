@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BiHomeAlt2 } from "react-icons/bi";
 import { SlBasket } from "react-icons/sl";
-import { FaRegUser } from "react-icons/fa6";
+import { FaRegUser } from "react-icons/fa";
 import { BiSolidCategory } from "react-icons/bi";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
@@ -10,13 +10,6 @@ import { Link, useLocation } from "react-router-dom";
 export const Navigation = () => {
   const [value, setValue] = useState("home");
   const location = useLocation();
-
-  useEffect(() => {
-    const savedHoverState = JSON.parse(localStorage.getItem("hoverState"));
-    if (savedHoverState) {
-      setValue(savedHoverState);
-    }
-  }, []);
 
   useEffect(() => {
     const currentPath = location.pathname.split("/")[1];

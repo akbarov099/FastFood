@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { Navigation } from "./Components/Navigation/Navigation";
 import { Home } from "./pages/Home/Home";
 import { Categoris } from "./pages/Categoris/Categoris";
@@ -8,9 +8,11 @@ import { Acount } from "./pages/Acount/Acount";
 import Single from "./pages/Single/Single";
 
 function Global() {
+  const location = useLocation();
+  const hideNavigation = location.pathname.startsWith('/product/');
+
   return (
     <>
-    
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/categories/*" element={<Categoris />} />
@@ -18,7 +20,7 @@ function Global() {
         <Route path="/account" element={<Acount />} />
         <Route path="/product/:id" element={<Single />} />
       </Routes>
-      <Navigation />
+      {!hideNavigation && <Navigation />}
     </>
   );
 }

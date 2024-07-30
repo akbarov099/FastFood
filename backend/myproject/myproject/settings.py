@@ -14,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-z0ik8yy4itrmuaj67h!0re1d=#4=f#te_s*9ts*+uyah9hnmg0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -111,3 +111,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 TWILIO_ACCOUNT_SID = 'your_twilio_account_sid'
 TWILIO_AUTH_TOKEN = 'your_twilio_auth_token'
 TWILIO_PHONE_NUMBER = 'your_twilio_phone_number'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
